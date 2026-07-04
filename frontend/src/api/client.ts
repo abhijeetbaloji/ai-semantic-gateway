@@ -3,7 +3,11 @@ import axios from 'axios'
 // Base URL comes from Vite env var (VITE_API_URL). In docker-compose we
 // set this to the nginx-proxied path; in local dev it defaults to the
 // backend on :8080.
-const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api/v1'
+let rawBaseURL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api/v1'
+if (rawBaseURL && !rawBaseURL.endsWith('/api/v1')) {
+  rawBaseURL = rawBaseURL.replace(/\/$/, '') + '/api/v1'
+}
+const baseURL = rawBaseURL
 
 export const api = axios.create({
   baseURL,
