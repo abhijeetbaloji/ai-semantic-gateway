@@ -1,0 +1,38 @@
+# Java / Spring Boot
+**/target/
+**/*.class
+**/*.jar
+**/*.war
+**/*.ear
+**/*.tar.gz
+.mvn/wrapper/maven-wrapper.properties
+.mvn/
+**/target
+
+# Node.js / React
+**/node_modules/
+**/dist/
+**/build/
+.eslintcache
+*.tsbuildinfo
+
+# Environment & Credentials
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+*.key
+credentials.json
+
+# IDEs and System Files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+Thumbs.db
