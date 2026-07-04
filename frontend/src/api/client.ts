@@ -65,12 +65,12 @@ export async function submitQuery(prompt: string): Promise<QueryResponseData> {
 }
 
 export async function fetchHealth(): Promise<HealthResponse> {
-  const res = await api.get<HealthResponse>('/health')
+  const res = await api.get<HealthResponse>('/status')
   return res.data
 }
 
 export async function fetchMetrics(): Promise<MetricsResponse> {
-  const res = await api.get<MetricsResponse>('/metrics')
+  const res = await api.get<MetricsResponse>('/stats')
   return res.data
 }
 

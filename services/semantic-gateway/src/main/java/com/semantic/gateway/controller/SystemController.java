@@ -25,7 +25,7 @@ public class SystemController {
         this.stats = stats;
     }
 
-    @GetMapping("/health")
+    @GetMapping({"/health", "/status"})
     public Map<String, Object> health() {
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("status", "UP");
@@ -34,7 +34,7 @@ public class SystemController {
         return body;
     }
 
-    @GetMapping("/metrics")
+    @GetMapping({"/metrics", "/stats"})
     public Map<String, Object> metrics() {
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("requestCount", stats.getRequestCount());
