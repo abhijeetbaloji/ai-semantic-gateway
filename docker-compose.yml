@@ -1,0 +1,56 @@
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: sg-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: semantic_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      # init.sql runs on first startup to enable pgvector + create the table
+      - ./services/semantic-gateway/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d semantic_db"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+
+  backend:
+    build:
+      context: ./services/semantic-gateway
+      dockerfile: Dockerfile
+    container_name: sg-backend
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_URL: jdbc:postgresql://db:5432/semantic_db
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      # OPENAI_MOCK=true means the backend does not need a real key.
+      # Set this to "false" and provide OPENAI_API_KEY to use real OpenAI.
+      OPENAI_MOCK: ${OPENAI_MOCK:-true}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      CACHE_THRESHOLD: ${CACHE_THRESHOLD:-0.90}
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        # Empty -> uses relative /api/v1 (nginx will proxy to backend)
+        VITE_API_URL: /api/v1
+    container_name: sg-frontend
+    depends_on:
+      - backend
+    ports:
+      - "5173:80"
+
+volumes:
+  db-data:

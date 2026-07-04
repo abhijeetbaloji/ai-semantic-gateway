@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.semantic.gateway.exception.GlobalExceptionHandlerTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.924 s -- in com.semantic.gateway.exception.GlobalExceptionHandlerTest
