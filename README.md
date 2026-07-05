@@ -1,5 +1,7 @@
 # AI Semantic Gateway
 
+![AI Semantic Gateway Architecture Banner](docs/images/architecture_banner.png)
+
 A production-ready semantic caching gateway for Large Language Models (LLMs). Instead of matching cached prompts by exact string equivalence, the gateway translates prompts into dense vector embeddings, performs nearest-neighbor search using cosine distance via **PostgreSQL (pgvector)**, and returns cached responses for semantically equivalent queries.
 
 ---
