@@ -43,6 +43,14 @@ Traditional exact-match caching (like Redis key-value stores) misses these varia
 
 The gateway is built on a modern, decoupled stack:
 * **Frontend:** React, TypeScript, Tailwind CSS, Vite. Deployed on **Vercel**.
+
+---
+
+## 📸 App Preview
+
+| Dashboard & Analytics | Caching Playground in Action |
+| :---: | :---: |
+| ![Dashboard Screenshot](docs/images/dashboard_screenshot.png) | ![Playground Caching Demo](docs/images/playground_screenshot.png) |
 * **Backend:** Spring Boot (Java 21), Hibernate/JPA, HikariCP, WebClient. Deployed on **Render**.
 * **Database:** PostgreSQL on **Supabase** with the **pgvector** extension enabled for vector similarity lookups.
 
