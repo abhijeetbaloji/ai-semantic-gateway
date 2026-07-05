@@ -145,9 +145,9 @@ public class AnalyticsController {
             } else {
                 Collections.sort(durations);
                 int size = durations.size();
-                map.put("p50", durations.get((int) (size * 0.5)));
-                map.put("p95", durations.get((int) (size * 0.95)));
-                map.put("p99", durations.get((int) (size * 0.99)));
+                map.put("p50", durations.get(Math.min((int) (size * 0.5), size - 1)));
+                map.put("p95", durations.get(Math.min((int) (size * 0.95), size - 1)));
+                map.put("p99", durations.get(Math.min((int) (size * 0.99), size - 1)));
             }
             response.add(map);
         }
