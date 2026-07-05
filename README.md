@@ -48,11 +48,24 @@ The gateway is built on a modern, decoupled stack:
 
 ## 📸 App Preview
 
+### 🖥️ Core Interfaces
 | Dashboard & Analytics | Caching Playground in Action |
 | :---: | :---: |
 | ![Dashboard Screenshot](docs/images/dashboard_screenshot.png) | ![Playground Caching Demo](docs/images/playground_screenshot.png) |
-* **Backend:** Spring Boot (Java 21), Hibernate/JPA, HikariCP, WebClient. Deployed on **Render**.
-* **Database:** PostgreSQL on **Supabase** with the **pgvector** extension enabled for vector similarity lookups.
+
+### 🔑 Security, Configuration, & Logs
+| API Key Management | Models & Providers Configuration |
+| :---: | :---: |
+| ![API Keys Page](docs/images/api_keys_screenshot.png) | ![Models Page](docs/images/models_screenshot.png) |
+
+| Usage Analytics | Cost Tracking & LLM Spend |
+| :---: | :---: |
+| ![Usage Analytics Page](docs/images/analytics_screenshot.png) | ![Cost Tracking Page](docs/images/cost_tracking_screenshot.png) |
+
+### 📋 Audit Trails
+| Real-time Audit Logs |
+| :---: |
+| ![Audit Logs Page](docs/images/audit_logs_screenshot.png) |
 
 ---
 
